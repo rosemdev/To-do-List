@@ -118,17 +118,37 @@ input, input.editor {
         text-transform: uppercase;
       }
 
-      & p {
+      & blockquote {
         font-size: 20px;
         color: #363f4e;
         font-weight: 600;
+        quotes: "\201C""\201D""\2018""\2019";
 
+        &:before {
+          color: #363f4e;
+          content: open-quote;
+          font-size: 4em;
+          line-height: 0.1em;
+          margin-right: 0.25em;
+          vertical-align: -0.4em;
+        }
+
+        &::after {
+          color: #363f4e;
+          content: close-quote;
+          font-size: 4em;
+          line-height: 0.1em;
+          margin-left: 0.25em;
+          vertical-align: -0.7em;
+        }
+
+      }
         & span {
           display: block;
-          text-align: right;
           margin: 10px;
+          text-align: right;
+          transform: translate(-22px, -22px);
         }
-      }
 
     }
 
@@ -192,6 +212,7 @@ input, input.editor {
           width: 90%;
           margin: 10px;
           display: flex;
+          position: relative;
 
           &.done {
             text-decoration: line-through;
@@ -202,6 +223,14 @@ input, input.editor {
             border: 2px solid #df555d;
             border-radius: 3px;
             padding: 5px;
+          }
+
+          & span {
+            position: absolute;
+            bottom: -27px;
+            padding: 20px;
+            font-size: 16px;
+            opacity: 1;
           }
         }
 
