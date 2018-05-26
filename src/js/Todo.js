@@ -23,6 +23,7 @@ export class Todo {
         this.TodoInput = this.todoList.querySelector('.todo-input > input');
         this.addTodoButton = this.todoList.querySelector('.todo-input > .btn');
         this.todoContent = this.todoList.querySelector('.to-dos');
+        this.doneState = false;
 
         this.todoList = document.createElement('ul');
         this.todoContent.appendChild(this.todoList);
@@ -47,22 +48,31 @@ export class Todo {
             let target = event.target,
                 doneIcon = target.closest('img.todo-done'),
                 removeIcon = target.closest('img.todo-remove'),
+                editIcon = target.closest('.todo-edit'),
                 li = target.closest('.todo-item');
 
             if (doneIcon) {
-                li.querySelector('.todo').style.textDecoration = 'line-through';
-                doneIcon.style.pointerEvents = 'none';
+                li.querySelector('.todo').classList.toggle('done');
+
+                this.doneState = li.querySelector('.todo').classList.contains('done');
+                this.storage.update(li.parentElement.children.length - 1 - getElementIndex(li), {doneState: this.doneState});
 
             } else if (removeIcon) {
                 this.storage.remove(li.parentElement.children.length - 1 - getElementIndex(li));
                 li.remove();
                 this.todoCount();
+
+            } else if (editIcon) {
+                editIcon.parentElement.style.pointerEvents = 'none';
+                this.edit(li);
             }
+
+
         });
     }
 
     _createTodoFromInput(input) {
-        const todo = {text: input.value};
+        const todo = {text: input.value, doneState: this.doneState};
         input.value = ''; // clear input
         this.createTodo(todo);
         this.storage.add(todo); // save to storage
@@ -70,8 +80,8 @@ export class Todo {
 
     createTodo(todo) {
         let todoItem =
-`<li class="todo-item">
-    <p class="todo">${todo.text}</p>
+            `<li class="todo-item">
+    <p class="todo${todo.doneState ? ' done' : ''}">${todo.text}</p>
     <span class="control-block">
         <small class="todo-edit">edit</small>
         <img class="todo-done" src="${checkMark}">
@@ -93,4 +103,31 @@ export class Todo {
             this.createTodo(todo);
         });
     }
+
+    edit(li) {
+        let editInput = document.createElement("input");
+        editInput.classList.add('editor');
+        let todoTextElement = li.querySelector('.todo');
+        editInput.value = todoTextElement.textContent;
+        todoTextElement.textContent = '';
+        todoTextElement.prepend(editInput);
+        editInput.focus();
+
+        let okButton = document.createElement('a');
+        okButton.classList.add('btn');
+        okButton.textContent = 'Ok';
+        editInput.after(okButton);
+
+        let newTodo = editInput;
+
+        okButton.addEventListener('click', () => {
+            todoTextElement.textContent = newTodo.value;
+            editInput.replaceWith(todoTextElement);
+
+            this.storage.update(li.parentElement.children.length - 1 - getElementIndex(li), {text: newTodo.value});
+            document.querySelector('.control-block').style.pointerEvents = ''
+        });
+
+    }
+
 }

@@ -17,6 +17,18 @@ export default  class Storage {
         return this.getAll()[index];
     }
 
+    update (index, value) {
+        let list = this.getAll();
+        list[index] = Object.assign(list[index], value);
+        localStorage.setItem(this.key, JSON.stringify(list));
+    }
+
+    updateProperty(index, propertyName, value) {
+        let list = this.getAll();
+        list[index][propertyName] = value;
+        localStorage.setItem(this.key, JSON.stringify(list));
+    }
+
     getAll() {
         return JSON.parse(localStorage.getItem(this.key));
     }

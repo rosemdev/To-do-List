@@ -43,6 +43,33 @@ body {
   }
 }
 
+input, input.editor {
+  display: block;
+  border: none;
+  padding: 20px;
+  font-size: 25px;
+  color: #363f4e;
+  width: 100%;
+  margin: 10px 25px 10px 0;
+
+  &.editor {
+    width: 90%;
+    padding: 10px;
+  }
+
+  &::placeholder {
+    opacity: .7;
+    font-size: 20px;
+  }
+
+  &:focus {
+    box-shadow: 6px 5px 20px 2px #00000045;
+    outline: none;
+
+  }
+}
+
+
 .todo-container {
   max-width: 850px;
   width: 100%;
@@ -125,27 +152,6 @@ body {
       align-items: center;
       justify-content: space-between;
 
-      & input {
-        display: block;
-        border: none;
-        padding: 20px;
-        font-size: 25px;
-        color: #363f4e;
-        width: 100%;
-        margin: 10px 25px 10px 0;
-
-        &::placeholder {
-          opacity: .7;
-          font-size: 20px;
-        }
-
-        &:focus {
-          box-shadow: 6px 5px 20px 2px #00000045;
-          outline: none;
-
-        }
-      }
-
       & .btn {
         display: block;
       }
@@ -185,9 +191,17 @@ body {
           text-align: left;
           width: 90%;
           margin: 10px;
+          display: flex;
 
           &.done {
             text-decoration: line-through;
+          }
+
+          &:focus, &.edit {
+            outline: none;
+            border: 2px solid #df555d;
+            border-radius: 3px;
+            padding: 5px;
           }
         }
 
@@ -216,16 +230,17 @@ body {
         }
       }
 
-      & p {
-        font-size: 25px;
-        color: #363f4e;
-        padding: 5px;
-        text-align: right;
+    }
 
-        & span {
-          font-weight: 300;
-          color: #df555d;
-        }
+    & p {
+      font-size: 25px;
+      color: #363f4e;
+      padding: 5px;
+      text-align: right;
+
+      & span {
+        font-weight: 300;
+        color: #df555d;
       }
     }
   }
@@ -238,6 +253,8 @@ footer {
   align-items: center;
   justify-content: space-between;
   color: white;
+  flex-wrap: wrap;
+  padding: 30px 0;
 
   & .logo-footer {
     padding: 0 30px;
@@ -271,6 +288,7 @@ footer {
 
   & .footer-menu, & .social {
     padding: 0 30px;
+    flex-shrink: 0;
     ul {
       padding: 0;
       list-style: none;
@@ -302,6 +320,22 @@ footer {
     & ul {
       & li {
         margin: 0 20px;
+      }
+    }
+  }
+
+  & .rights {
+    margin: 10px auto;
+    padding: 20px;
+
+    & a {
+      text-decoration: none;
+      transition: .3s ease-in-out;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        color: #df555d;
       }
     }
   }
