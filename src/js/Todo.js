@@ -64,6 +64,7 @@ export class Todo {
 
             } else if (editIcon) {
                 this.edit(li);
+                this.submit(li.querySelector('.editor'), li);
             }
 
 
@@ -111,8 +112,11 @@ export class Todo {
         editInput.value = todoTextElement.textContent;
         todoTextElement.textContent = '';
         todoTextElement.prepend(editInput);
+        li.querySelector('.todo').classList.remove('done');
         editInput.focus();
+    }
 
+    submit (editInput, li) {
         let okButton = document.createElement('a');
         okButton.classList.add('btn');
         okButton.textContent = 'Ok';
@@ -124,16 +128,17 @@ export class Todo {
         okButton.addEventListener('click', () => {
 
             if (newTodo.value.length > 0) {
-                todoTextElement.textContent = newTodo.value;
-                editInput.replaceWith(todoTextElement);
+                li.querySelector('.todo').textContent = newTodo.value;
+                editInput.replaceWith(li.querySelector('.todo'));
                 this.storage.update(li.parentElement.children.length - 1 - getElementIndex(li), {text: newTodo.value});
             } else {
                 let message = document.createElement('span');
-                message.textContent = 'Please, input todo, or delete that after submit.'
+                message.textContent = 'Please, input todo, or delete that after submit.';
                 newTodo.after(message);
             }
 
-            li.querySelector('.control-block').style.pointerEvents = ''
+            li.querySelector('.control-block').style.pointerEvents = '';
+            li.querySelector('.todo').classList.add('done');
         });
 
     }
