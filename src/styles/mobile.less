@@ -1,0 +1,80 @@
+@media (max-width: 768px) {
+
+  .btn {
+    padding: 10px;
+  }
+
+  input, input.editor {
+    padding: 10px;
+  }
+
+  .todo-container {
+    width: 100%;
+    margin: 0;
+
+    & .todo-header {
+      align-items: center;
+      border-radius: 0;
+      & h1 {
+        font-size: 30px;
+
+      }
+    }
+
+    & .todo-banner {
+      flex-direction: column;
+
+      & .description {
+        & blockquote {
+          font-size: 15px;
+          margin-left: 0;
+
+        }
+      }
+
+      & .bg {
+        & img {
+          width: 150px;
+        }
+      }
+    }
+
+    .to-dos {
+      ul {
+        li {
+          p {
+            font-size: 16px;
+          }
+
+          span {
+            img {
+              width: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & footer {
+    & .logo-footer {
+      & a {
+        font-size: 30px;
+      }
+    }
+
+    & .footer-menu, & .social {
+      padding: 0;
+      width: 100%;
+      ul {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        li {
+          margin: 10px;
+        }
+      }
+    }
+
+  }
+}
