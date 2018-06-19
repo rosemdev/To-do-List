@@ -1,0 +1,232 @@
+body {
+  background-color: #454d59;
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+  display: flow-root;
+}
+.bg-wrapper {
+  background-image: url("ThinkstockPhotos-481009476.4eea2e4c.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.btn {
+  display: inline-block;
+  font-size: 20px;
+  background-color: #363f4e;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
+  color: white;
+}
+.btn:hover {
+  background-color: white;
+  color: #363f4e;
+  box-shadow: 6px 5px 20px 2px #00000045;
+}
+.todo-container {
+  max-width: 850px;
+  width: 100%;
+  margin-left: 70px;
+  box-shadow: 0 20px 86px 0 rgba(0, 0, 0, 0.57);
+  margin-top: 80px;
+}
+.todo-container .todo-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background-color: #363f4e;
+  padding: 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.todo-container .todo-header h1 {
+  font-family: 'Gloria Hallelujah', cursive;
+  text-transform: uppercase;
+  font-size: 45px;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: white;
+}
+.todo-container .todo-header .logo {
+  height: 50px;
+}
+.todo-container .todo-banner {
+  background-color: #df555d;
+  padding: 30px;
+  color: white;
+  text-align: left;
+  display: flex;
+}
+.todo-container .todo-banner .description {
+  position: relative;
+  z-index: 2;
+}
+.todo-container .todo-banner .description h2 {
+  margin-top: 0;
+  font-family: 'Gloria Hallelujah', cursive;
+  text-transform: uppercase;
+}
+.todo-container .todo-banner .description p {
+  font-size: 20px;
+  color: #363f4e;
+  font-weight: 600;
+}
+.todo-container .todo-banner .description p span {
+  display: block;
+  text-align: right;
+  margin: 10px;
+}
+.todo-container .todo-banner .bg img {
+  width: 250px;
+  transform: rotate(20deg) translate(44px, 5px);
+}
+.todo-container .todo-content {
+  padding: 30px;
+  background-color: #eeeeef;
+}
+.todo-container .todo-content .todo-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-container .todo-content .todo-input input {
+  display: block;
+  border: none;
+  padding: 20px;
+  font-size: 25px;
+  color: #363f4e;
+  width: 100%;
+  margin: 10px 25px 10px 0;
+}
+.todo-container .todo-content .todo-input input::placeholder {
+  opacity: .7;
+  font-size: 20px;
+}
+.todo-container .todo-content .todo-input input:focus {
+  box-shadow: 6px 5px 20px 2px #00000045;
+  outline: none;
+}
+.todo-container .todo-content .todo-input .btn {
+  display: block;
+}
+.todo-container .to-dos {
+  padding: 30px;
+  background-color: white;
+}
+.todo-container .to-dos ul {
+  padding: 0;
+}
+.todo-container .to-dos ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  color: #363f4e;
+  padding: 5px;
+  margin: 2px 0;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
+}
+.todo-container .to-dos ul li:hover {
+  background-color: #ededef;
+}
+.todo-container .to-dos ul li:hover span {
+  transform: scale(1.1);
+  color: #df555d;
+  opacity: 1;
+}
+.todo-container .to-dos ul li p {
+  width: 90%;
+  margin: 10px;
+}
+.todo-container .to-dos ul li span {
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: .3;
+  padding-right: 3px;
+}
+.todo-container .to-dos ul li span small {
+  font-size: 15px;
+  margin: 5px;
+}
+.todo-container .to-dos ul li span img {
+  width: 20px;
+  margin: 0 2px;
+}
+.todo-container .to-dos ul li .plus-icon span {
+  padding: 2px;
+  background-color: #363f4e;
+  display: block;
+  width: 20px;
+}
+.todo-container .to-dos ul li .plus-icon span:first-child {
+  transform: rotate(45deg) translate(3px);
+}
+.todo-container .to-dos ul li .plus-icon span:last-child {
+  transform: rotate(135deg) translate(-2px);
+}
+footer {
+  background-color: #454d59;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+footer .logo-footer {
+  padding: 0 30px;
+  text-align: center;
+}
+footer .logo-footer .logo {
+  width: 65px;
+  margin-right: 15px;
+}
+footer .logo-footer p {
+  font-family: 'Gloria Hallelujah', cursive;
+  text-transform: uppercase;
+  font-size: 45px;
+  color: white;
+}
+footer .footer-menu,
+footer .social {
+  padding: 30px;
+}
+footer .footer-menu ul,
+footer .social ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+footer .footer-menu ul li,
+footer .social ul li {
+  margin: 0 40px;
+}
+footer .footer-menu ul li a,
+footer .social ul li a {
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+footer .footer-menu ul li a:hover,
+footer .social ul li a:hover {
+  color: #df555d;
+}
+footer .footer-menu ul li a i,
+footer .social ul li a i {
+  font-size: 35px;
+}
+footer .social ul li {
+  margin: 0 20px;
+}
